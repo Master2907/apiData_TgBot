@@ -9,16 +9,12 @@ import core.local_setting as st
 from core.handlers import getMovie
 from core.callback import getVideo
 
-async def startup(bot: Bot):
-    await bot.send_message(5811454533, 'Started')
-
 async def start():
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=st.TOKEN)
     dp = Dispatcher()
 
-    dp.startup.register(startup)
-    dp.message.register(getMovie    )
+    dp.message.register(getMovie)
     dp.callback_query.register(getVideo)
 
     try:
